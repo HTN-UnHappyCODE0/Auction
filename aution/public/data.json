@@ -1,0 +1,87 @@
+[
+    {
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee1",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },
+    {
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee2",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },
+    {
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee3",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },
+    {
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee4",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },{
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee5",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },{
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee6",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },{
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee7",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },
+    {
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee8",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },{
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee9",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },{
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee10",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    },
+
+    {
+      "imageUrl": "https://flowbite.com/docs/images/carousel/carousel-1.svg",
+      "altText": "Front of men's Basic Tee in black.",
+      "title": "Basic Tee11",
+      "color": "Black",
+      "price": "$35",
+      "link": "#"
+    }
+  ]
+  
