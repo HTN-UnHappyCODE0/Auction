@@ -3,9 +3,9 @@
     <div
       class="relative h-64 mx-auto max-w-screen-xl overflow-hidden rounded-lg"
     >
-      <div class="absolute z-30 flex w-full h-full">
+      <div class="absolute z-10 flex w-full h-full">
         <div
-          class="relative z-30 w-1/3 px-6 py-10 text-black md:py-10 md:w-1/3"
+          class="relative z-10 w-1/3 px-6 py-10 text-black md:py-10 md:w-1/3"
         >
           <h2 class="text-2xl max-w-lg text-center lg:max-w-lg lg:text-4xl">
             See what you can do.

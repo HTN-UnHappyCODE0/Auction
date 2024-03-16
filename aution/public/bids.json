@@ -1,0 +1,47 @@
+[
+    {
+      "price": "400$",
+      "label": "Start bid"
+    },
+    {
+      "price": "500$",
+      "label": "Another label"
+    },
+    {
+      "price": "600$",
+      "label": "Yet another label"
+    },
+    {
+      "price": "700$",
+      "label": "Fourth label"
+    },
+    {
+      "price": "800$",
+      "label": "Fifth label"
+    },
+    {
+      "price": "900$",
+      "label": "Sixth label"
+    },
+    {
+      "price": "1000$",
+      "label": "Seventh label"
+    },
+    {
+      "price": "1100$",
+      "label": "Eighth label"
+    },
+    {
+      "price": "1200$",
+      "label": "Ninth label"
+    },
+    {
+      "price": "1300$",
+      "label": "Tenth label"
+    },
+    {
+        "price": "1400$",
+        "label": "Tenth label"
+      }
+  ]
+  

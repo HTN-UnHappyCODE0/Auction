@@ -26,7 +26,12 @@
         </h3>
       </div>
 
-      <a href="" class="py-4 underline hover:text-blue-700">View All</a>
+      <router-link
+        to="/live"
+        class="py-4 underline hover:text-blue-700"
+        aria-current="page"
+        >View all</router-link
+      >
     </div>
 
     <ul

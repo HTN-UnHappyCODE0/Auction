@@ -1,9 +1,9 @@
 <template>
   <div
     id="drawer-example"
-    class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
     tabindex="-1"
     aria-labelledby="drawer-label"
+    class="fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800"
   >
     <h5
       id="drawer-label"
@@ -381,6 +381,7 @@
 
 <script>
 import filter from "../../public/filter.json";
+
 export default {
   data() {
     return {

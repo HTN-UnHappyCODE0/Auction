@@ -10,8 +10,7 @@
       { "label": "Small (Under 40 cm)", "value": "Small","checked": false },
       { "label": "Medium (40 cm -100 cm)", "value": "Medium","checked": false },
       { "label": "Large (100 cm - 200 cm)", "value": "Large","checked": false },
-        { "label": "Extra Large (Over 200 cm)", "value": "Extra Large","checked": false }
-      
+      { "label": "Extra Large (Over 200 cm)", "value": "Extra Large","checked": false }
     ],
     "colors":[
         { "label": "White", "value": "white","checked": false },
