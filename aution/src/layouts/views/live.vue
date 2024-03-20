@@ -474,9 +474,7 @@
             >
               Lot 50 open for bidding
             </h1>
-            <ol
-              class="relative mx-3 border-s border-gray-200 dark:border-gray-700"
-            >
+            <ol class="relative mx-3 border-s border-gray-200">
               <li
                 v-for="(item, index) in bids"
                 :key="index"

@@ -90,29 +90,34 @@
         :key="index"
         class="snap-align-none"
       >
-        <div class="group min-w-10 relative">
-          <div
-            class="w-full max-h-40 overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80"
-          >
-            <img
-              :src="item.imageUrl"
-              :alt="item.altText"
-              class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-            />
-          </div>
-          <div class="mt-4 flex justify-between">
-            <div>
-              <h3 class="text-sm text-gray-700">
-                <a :href="item.link">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  {{ item.title }}
-                </a>
-              </h3>
+        <router-link
+          :to="{ name: 'productDetail', params: { productName: item.name } }"
+        >
+          <div class="group min-w-10 relative">
+            <div
+              class="w-full max-h-40 overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80"
+            >
+              <img
+                :src="item.imageUrl"
+                :alt="item.altText"
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+              />
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a :href="item.link">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    {{ item.title }}
+                  </a>
+                </h3>
+              </div>
             </div>
           </div>
-        </div>
+        </router-link>
       </li>
     </ul>
+
     <fwb-pagination
       v-model="currentPage"
       :total-items="totalItems"
@@ -157,10 +162,10 @@ export default {
       this.openSort = !this.openSort;
     },
     handleSelectedColorsUpdate(selectedColors) {
-      this.selectedColors = selectedColors; // Update selectedColors when emitted from drawer.vue
+      this.selectedColors = selectedColors;
     },
     removeColor(index) {
-      this.selectedColors.splice(index, 1); // Loại bỏ phần tử khỏi mảng
+      this.selectedColors.splice(index, 1);
     },
     removeSize(sizeValue) {
       const updatedSizes = this.sizes.map((size) => {
