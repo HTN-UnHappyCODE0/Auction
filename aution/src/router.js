@@ -1,4 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import { onMounted } from "vue";
+import { initFlowbite } from "flowbite";
 import auction from "./layouts/views/auction.vue";
 import home from "./layouts/views/home.vue";
 import artwork from "./layouts/views/artwork.vue";
@@ -19,4 +21,13 @@ const router = createRouter({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  onMounted(() => {
+    initFlowbite();
+  });
+
+  next();
+});
+
 export default router;

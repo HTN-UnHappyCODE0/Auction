@@ -184,7 +184,12 @@ export default {
 import drawer from "@/components/drawer.vue";
 import { FwbPagination } from "flowbite-vue";
 import { ref, computed } from "vue";
+import { onMounted } from "vue";
+import { initFlowbite } from "flowbite";
 
+onMounted(() => {
+  initFlowbite();
+});
 const currentPage = ref(1);
 const totalItems = ref(data.length);
 const totalPages = ref(Math.ceil(data.length / 9));

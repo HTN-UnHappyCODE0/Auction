@@ -8,7 +8,7 @@
           id="container"
           @mousemove="handleMouseMove"
           @mouseleave="resetTransform"
-          class="flex justify-center items-center overflow-hidden w-9/12"
+          class="flex justify-center items-center overflow-hidden w-7/12"
         >
           <img
             :style="imgStyle"
