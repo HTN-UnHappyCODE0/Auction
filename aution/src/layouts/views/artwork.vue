@@ -79,38 +79,34 @@
       </span>
     </button>
   </div>
-  <div class="h-30 mt-10 mx-auto max-w-screen-xl">
+  <div class="h-full mt-10 mx-auto max-w-screen-xl">
     <div class="flex flex-wrap justify-between">
       <h2 class="text-2xl mx-8 max-w-lg lg:max-w-lg lg:text-4xl">Auctions</h2>
     </div>
 
-    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <li
-        v-for="(item, index) in slicedProducts"
-        :key="index"
-        class="snap-align-none"
-      >
+    <ul class="my-8 sm:columns-2 lg:columns-3">
+      <li v-for="(item, index) in slicedProducts" :key="index" class="h-full">
         <router-link
           :to="{ name: 'productDetail', params: { productName: item.name } }"
         >
           <div class="group min-w-10 relative">
             <div
-              class="w-full max-h-40 overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80"
+              class="w-full overflow-hidden rounded-md bg-white group-hover:opacity-75 lg:h-full"
             >
               <img
                 :src="item.imageUrl"
                 :alt="item.altText"
                 class="h-full w-full object-cover object-center lg:h-full lg:w-full"
               />
-            </div>
-            <div class="mt-4 flex justify-between">
-              <div>
-                <h3 class="text-sm text-gray-700">
-                  <a :href="item.link">
-                    <span aria-hidden="true" class="absolute inset-0"></span>
-                    {{ item.title }}
-                  </a>
-                </h3>
+              <div class="mt-4 flex justify-between">
+                <div>
+                  <h3 class="text-sm text-gray-700">
+                    <a :href="item.link">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      {{ item.title }}
+                    </a>
+                  </h3>
+                </div>
               </div>
             </div>
           </div>
@@ -130,7 +126,7 @@
       <template v-slot:page-button="{ page, setPage }">
         <button
           @click="setPage(page)"
-          class="flex items-center justify-center first:rounded-l-lg last:rounded-r-lg px-3 h-8 ml-0 leading-tight text-gray-500 border border-white hover:text-gray-700 hover:underline dark:hover:text-white"
+          class="flex items-center justify-center first:rounded-l-lg last:rounded-r-lg px-3 h-8 ml-0 leading-tight text-gray-500 border border-white hover:text-gray-700 hover:underline"
         >
           {{ page }}
         </button>
