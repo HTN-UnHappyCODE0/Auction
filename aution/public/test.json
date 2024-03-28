@@ -1,0 +1,64 @@
+[
+  {
+    "id_Author": 1,
+    "author_Name": "tac gia 1",
+    "products": [
+      {
+        "id_Product": 4,
+        "authorId_Author": 1,
+        "category": "string",
+        "product_Name": "string",
+        "image_Url": "string",
+        "info": "string",
+        "starting_Price": 0.0,
+        "current_Price": 0.0
+      },
+      {
+        "id_Product": 3,
+        "authorId_Author": 1,
+        "category": "string",
+        "product_Name": "string",
+        "image_Url": "string",
+        "info": "string",
+        "starting_Price": 0.0,
+        "current_Price": 0.0
+      },
+      {
+        "id_Product": 2,
+        "authorId_Author": 1,
+        "category": "nguoi",
+        "product_Name": "tranh 2",
+        "image_Url": "string",
+        "info": "string",
+        "starting_Price": 1000.0,
+        "current_Price": null
+      },
+      {
+        "id_Product": 1,
+        "authorId_Author": 1,
+        "category": "hoa",
+        "product_Name": "tranh 1",
+        "image_Url": "string",
+        "info": "string",
+        "starting_Price": 1000.0,
+        "current_Price": null
+      }
+    ]
+  },
+  {
+    "id_Author": 2,
+    "author_Name": "tac gia 2",
+    "products": [
+      {
+        "id_Product": 5,
+        "authorId_Author": 2,
+        "category": "string",
+        "product_Name": "string",
+        "image_Url": "string",
+        "info": "string",
+        "starting_Price": 0.0,
+        "current_Price": 0.0
+      }
+    ]
+  }
+]

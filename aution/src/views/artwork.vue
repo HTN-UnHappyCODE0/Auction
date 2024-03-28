@@ -89,7 +89,7 @@
         <router-link
           :to="{ name: 'productDetail', params: { productName: item.name } }"
         >
-          <div class="group min-w-10 relative">
+          <div class="group min-w-10 mb-5 relative">
             <div
               class="w-full overflow-hidden rounded-md bg-white group-hover:opacity-75 lg:h-full"
             >
@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import data from "../../../public/data.json";
+import data from "../../public/data.json";
 
 export default {
   data() {
@@ -177,7 +177,7 @@ export default {
 </script>
 
 <script setup>
-import drawer from "@/components/drawer.vue";
+import drawer from "../components/drawer.vue";
 import { FwbPagination } from "flowbite-vue";
 import { ref, computed } from "vue";
 import { onMounted } from "vue";

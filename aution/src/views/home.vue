@@ -220,7 +220,7 @@
 </template>
 
 <script>
-import data from "../../../public/data.json";
+import data from "../../public/data.json";
 export default {
   data() {
     return {

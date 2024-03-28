@@ -76,7 +76,7 @@
           >
             <li>
               <router-link
-                to="/artirts"
+                to="/Artirts"
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 aria-current="page"
                 >Artirts</router-link
@@ -84,7 +84,7 @@
             </li>
             <li>
               <router-link
-                to="/artworks"
+                :to="{ name: 'artworks' }"
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 aria-current="page"
                 >Artworks</router-link
@@ -92,7 +92,7 @@
             </li>
             <li>
               <router-link
-                to="/auction"
+                :to="{ name: 'auction' }"
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 aria-current="page"
                 >Auctions</router-link

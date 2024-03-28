@@ -507,8 +507,8 @@ onMounted(() => {
 });
 </script>
 <script>
-import data from "../../../public/data.json";
-import bids from "../../../public/bids.json";
+import data from "../../public/data.json";
+import bids from "../../public/bids.json";
 export default {
   name: "pink-tabs",
   data() {
