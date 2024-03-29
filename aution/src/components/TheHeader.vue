@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white sticky w-full mb-10 z-30 top-0 start-0 border-b">
+  <nav class="bg-white w-full mb-10 z-30 top-0 start-0 border-b">
     <div
       class="max-w-screen-xl flex-nowrap flex items-center justify-between mx-auto p-4 md:flex-row flex-col-reverse"
     >
@@ -128,6 +128,12 @@
 <script setup>
 import login from "@/components/login.vue";
 import signup from "@/components/signup.vue";
+import { onMounted } from "vue";
+import { initFlowbite } from "flowbite";
+
+onMounted(() => {
+  initFlowbite();
+});
 </script>
 
 <style scoped>

@@ -19,7 +19,7 @@
     "altText": "Front of men's Basic Tee in black5.",
     "title": "Basic Tee6",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#"
   },
   {
@@ -40,7 +40,7 @@
     "altText": "Front of men's Basic Tee in black2.",
     "title": "Basic Tee3",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#",
     "lot": "lot 52"
   },
@@ -51,7 +51,7 @@
     "altText": "Front of men's Basic Tee in black3.",
     "title": "Basic Tee4",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#"
   },
   {
@@ -61,7 +61,7 @@
     "altText": "Front of men's Basic Tee in black4.",
     "title": "Basic Tee5",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#"
   },
   {
@@ -71,7 +71,7 @@
     "altText": "Front of men's Basic Tee in black6.",
     "title": "Basic Tee7",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#"
   },
   {
@@ -81,7 +81,7 @@
     "altText": "Front of men's Basic Tee in black7.",
     "title": "Basic Tee8",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#"
   },
   {
@@ -91,7 +91,7 @@
     "altText": "Front of men's Basic Tee in .",
     "title": "Basic Tee9",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#"
   },
   {
@@ -101,7 +101,7 @@
     "altText": "Front of men's Basic Tee .",
     "title": "Basic Tee10",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#"
   },
 
@@ -112,7 +112,7 @@
     "altText": "Front of men's Basic .",
     "title": "Basic Tee11",
     "color": "Black",
-    "price": "$35",
+    "price": "35",
     "link": "#"
   }
 ]
