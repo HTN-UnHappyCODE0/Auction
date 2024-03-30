@@ -5,7 +5,7 @@
       <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
         <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/4882d8192357077.65da60f1ebfd9.jpg"
             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
           <div class="relative mx-auto max-w-screen-xl px-4 md:py-20 md:h-96 sm:px-6 items-center lg:px-8">
             <h1 class="text-3xl max-w-lg font-normal sm:text-5xl">
@@ -26,7 +26,7 @@
 
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/d91869192357077.65da603519f62.jpg"
             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
           <div class="relative mx-auto max-w-screen-xl px-4 md:py-20 md:h-96 sm:px-6 items-center lg:px-8">
             <h1 class="text-3xl max-w-lg font-normal sm:text-5xl">
@@ -46,7 +46,7 @@
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/23201b192357077.65da60f1ecb7f.jpg"
             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
           <div class="relative mx-auto max-w-screen-xl px-4 md:py-20 md:h-96 sm:px-6 items-center lg:px-8">
             <h1 class="text-3xl max-w-lg font-normal sm:text-5xl">

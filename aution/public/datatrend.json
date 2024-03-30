@@ -3,7 +3,7 @@
     "lot": "lot 50",
     "name": "Product1",
     "author": "John Doe",
-    "imageUrl": "https://images.pexels.com/photos/1496373/pexels-photo-1496373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageUrl": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/946d25194262655.65f9740f40ddb.png",
     "altText": "Front of men's Basic Tee in black0.",
     "materials": "Flashe vinyl paint and oil on canvas",
     "size": "95 7/10 × 71 7/10 in | 243 × 182 cm",
@@ -15,7 +15,7 @@
   {
     "name": "Product6",
     "lot": "lot 55",
-    "imageUrl": "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageUrl": "https://mir-s3-cdn-cf.behance.net/project_modules/fs/5b2eb0164028847.63ef92d63f1a0.png",
     "altText": "Front of men's Basic Tee in black5.",
     "title": "Basic Tee6",
     "color": "Black",
@@ -24,7 +24,7 @@
   },
   {
     "name": "Product2",
-    "imageUrl": "https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg",
+    "imageUrl": "https://mir-s3-cdn-cf.behance.net/project_modules/fs/60607f193047211.65e603467bd50.png",
     "altText": "Front of men's Basic Tee in black1.",
     "title": "Basic Tee2",
     "color": "Black",
