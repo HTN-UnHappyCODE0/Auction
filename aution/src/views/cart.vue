@@ -21,7 +21,7 @@
                                 <div class="md:pl-3 ml-2 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
                                     <p class="text-xs leading-3 text-gray-800 md:pt-0 pt-4">RF293</p>
                                     <div class="flex items-center justify-between w-full pt-1">
-                                        <p class="text-base font-black leading-none text-gray-800">North wolf bag</p>
+                                        <p class="text-base font-black leading-none text-gray-800">artworkname</p>
                                         <button class="text-gray-500 hover:text-gray-900"><svg class="w-4 h-4"
                                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 512 512">
@@ -30,10 +30,10 @@
                                             </svg></button>
 
                                     </div>
-                                    <p class="text-xs leading-3 text-gray-600 pt-2">Height: 10 inches</p>
+                                    <p class="text-xs leading-3 text-gray-600 pt-2">Artistname</p>
                                     <p class="text-xs leading-3 text-gray-600 py-4">Color: Black</p>
-                                    <p class="w-96 text-xs leading-3 text-gray-600">Composition: 100% calf leather</p>
-                                    <div class="flex items-center justify-between pt-5">
+
+                                    <div class="flex w-96  items-center justify-between pt-5">
                                         <div class="flex itemms-center">
                                             <p class="text-xl leading-3 text-gray-800 cursor-pointer">Giá</p>
 
@@ -43,38 +43,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="lg:w-3/5 mx-auto ">
-                            <div class="flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-600">
-                                <div class=" w-full">
-                                    <img src="https://images.pexels.com/photos/1485894/pexels-photo-1485894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                        alt="Black Leather Bag"
-                                        class="h-full lg:object-center lg:object-cover  w-full object-center object-cover" />
-                                </div>
-                                <div class="md:pl-3 ml-2 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
-                                    <p class="text-xs leading-3 text-gray-800 md:pt-0 pt-4">RF293</p>
-                                    <div class="flex items-center justify-between w-full pt-1">
-                                        <p class="text-base font-black leading-none text-gray-800">North wolf bag</p>
-                                        <button class="text-gray-500 hover:text-gray-900"><svg class="w-4 h-4"
-                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 512 512">
-                                                <path
-                                                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
-                                            </svg></button>
 
-                                    </div>
-                                    <p class="text-xs leading-3 text-gray-600 pt-2">Height: 10 inches</p>
-                                    <p class="text-xs leading-3 text-gray-600 py-4">Color: Black</p>
-                                    <p class="w-96 text-xs leading-3 text-gray-600">Composition: 100% calf leather</p>
-                                    <div class="flex items-center justify-between pt-5">
-                                        <div class="flex itemms-center">
-                                            <p class="text-xl leading-3 text-gray-800 cursor-pointer">Giá</p>
-
-                                        </div>
-                                        <p class="text-base font-black leading-none text-gray-800">$9,000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
 
@@ -119,10 +88,7 @@ export default {
     name: "component",
     data() {
         return {
-            show: false,
-            text: "Sort by",
-            search: true,
-            windowWidth: window.innerWidth
+
         }
     },
     methods: {
@@ -134,20 +100,4 @@ export default {
 
 <style>
 /* width */
-
-#scroll::-webkit-scrollbar {
-    width: 1px;
-}
-
-/* Track */
-
-#scroll::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-/* Handle */
-
-#scroll::-webkit-scrollbar-thumb {
-    background: rgb(133, 132, 132);
-}
 </style>
