@@ -108,7 +108,7 @@
     <div class="items-center xl:flex xl:my-10">
       <h1 class="font-medium mx-10 text-xl xl:mx-0">Lựa chọn theo thể loại</h1>
       <div class="mt-5 mx-10 flex-grow justify-evenly flex xl:mt-0">
-        <selectCategoryButton :href="{ name: 'artworks' }"> Tranh</selectCategoryButton />
+        <selectCategoryButton :href="{ name: 'painting' }"> Tranh</selectCategoryButton />
         <selectCategoryButton :href="{ name: 'artworks' }"> Ảnh</selectCategoryButton />
         <selectCategoryButton :href="{ name: 'artworks' }"> ???</selectCategoryButton />
       </div>

@@ -79,9 +79,9 @@
 
   </div>
   <div class="h-full mt-10 mx-auto max-w-screen-xl">
-    <div class="flex flex-wrap justify-between">
+    <!-- <div class="flex flex-wrap justify-between">
       <h2 class="text-2xl mx-8 max-w-lg lg:max-w-lg lg:text-4xl">Auctions</h2>
-    </div>
+    </div> -->
 
     <ul class="my-8 mx-8 columns-2 lg:columns-3">
       <li v-for="(item, index) in slicedProducts" :key="index" class="h-full">

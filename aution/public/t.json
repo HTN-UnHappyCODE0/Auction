@@ -1,0 +1,155 @@
+[
+  {
+    "order_id": 1,
+    "user_id": 4,
+    "order_date": "2024-04-01T09:26:51",
+    "order_items": [
+      {
+        "order_detail_id": 1,
+        "product_id": 2,
+        "order_id": 1,
+        "product": {
+          "product_id": 2,
+          "category_id": 2,
+          "author_id": 2,
+          "product_name": "Product2",
+          "price": 888.88,
+          "description": "Product2's description",
+          "author": {
+            "author_id": 2,
+            "author_name": "Author2"
+          },
+          "category": {
+            "category_id": 2,
+            "category_name": "Category2"
+          },
+          "productImages": [
+            {
+              "image_id": 4,
+              "product_id": 2,
+              "image_url": "https://i.ytimg.com/vi/AnzCuOiuLBI/maxresdefault.jpg"
+            },
+            {
+              "image_id": 8,
+              "product_id": 2,
+              "image_url": "https://i.pinimg.com/736x/11/8c/d4/118cd4868c2a0c32f41c88d3ffa18a46.jpg"
+            },
+            {
+              "image_id": 11,
+              "product_id": 2,
+              "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4L7p3KY0RE3cIxwwPpK1N-uoeDo0NQ7-awNcSYOJ-0Q&s"
+            }
+          ],
+          "tags": [
+            {
+              "tag_id": 2,
+              "tag_name": "Tag2"
+            },
+            {
+              "tag_id": 3,
+              "tag_name": "Tag3"
+            },
+            {
+              "tag_id": 4,
+              "tag_name": "Tag4"
+            }
+          ]
+        }
+      },
+      {
+        "order_detail_id": 2,
+        "product_id": 3,
+        "order_id": 1,
+        "product": {
+          "product_id": 3,
+          "category_id": 3,
+          "author_id": 2,
+          "product_name": "Product 3",
+          "price": 996.69,
+          "description": "Description fo Product 3",
+          "author": {
+            "author_id": 2,
+            "author_name": "Author2"
+          },
+          "category": {
+            "category_id": 3,
+            "category_name": "Category3"
+          },
+          "productImages": [
+            {
+              "image_id": 9,
+              "product_id": 3,
+              "image_url": "https://upload.wikimedia.org/wikipedia/vi/2/26/Dragon_Ball_GT_Volume_1.jpg"
+            },
+            {
+              "image_id": 10,
+              "product_id": 3,
+              "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Rdl5PmfRL8Vz_0PXhsEWZpT7s6lQcC0heuayskk1s1cUCVDSQwSwBHxvZA-nl5kbmds&usqp=CAU"
+            }
+          ],
+          "tags": [
+            {
+              "tag_id": 2,
+              "tag_name": "Tag2"
+            },
+            {
+              "tag_id": 4,
+              "tag_name": "Tag4"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "order_id": 2,
+    "user_id": 3,
+    "order_date": "2024-04-01T09:26:51",
+    "order_items": [
+      {
+        "order_detail_id": 3,
+        "product_id": 3,
+
+        "order_id": 2,
+        "product": {
+          "product_id": 3,
+          "category_id": 3,
+          "author_id": 2,
+          "product_name": "Product 3",
+          "price": 996.69,
+          "description": "Description fo Product 3",
+          "author": {
+            "author_id": 2,
+            "author_name": "Author2"
+          },
+          "category": {
+            "category_id": 3,
+            "category_name": "Category3"
+          },
+          "productImages": [
+            {
+              "image_id": 9,
+              "product_id": 3,
+              "image_url": "https://upload.wikimedia.org/wikipedia/vi/2/26/Dragon_Ball_GT_Volume_1.jpg"
+            },
+            {
+              "image_id": 10,
+              "product_id": 3,
+              "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Rdl5PmfRL8Vz_0PXhsEWZpT7s6lQcC0heuayskk1s1cUCVDSQwSwBHxvZA-nl5kbmds&usqp=CAU"
+            }
+          ],
+          "tags": [
+            {
+              "tag_id": 2,
+              "tag_name": "Tag2"
+            },
+            {
+              "tag_id": 4,
+              "tag_name": "Tag4"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

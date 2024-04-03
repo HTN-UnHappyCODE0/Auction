@@ -8,6 +8,7 @@ import live from "../views/live.vue";
 import cart from "@/views/cart.vue";
 import ProductDetail from "../views/productDetail.vue";
 import DefaultLayout from "../default/DefaultLayout.vue";
+import painting from "@/views/painting.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -19,6 +20,8 @@ const router = createRouter({
         { path: "/", component: home, name: "home" },
         { path: "/auction", component: auction, name: "auction" },
         { path: "/artworks", component: artwork, name: "artworks" },
+        { path: "/painting", component: painting, name: "painting" },
+
         { path: "/cart", component: cart, name: "cart" },
         { path: "/live", component: live, name: "live" },
         {
