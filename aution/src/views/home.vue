@@ -117,7 +117,7 @@
     <hr class=" border-gray-200 mx-10 mb-8 xl:ml-0" />
   </div>
 
-  <dir class="mx-auto my-5 lg:max-w-7xl ">
+  <div class="mx-auto my-5 lg:max-w-7xl ">
     <h1 class="font-medium mx-10 text-4xl xl:mx-0 text-center">Nổi bật</h1>
     <div class="relative ">
 
@@ -146,7 +146,7 @@
       </ul>
     </div>
     <hr class=" border-gray-200 mx-10 mb-8 xl:ml-0" />
-  </dir>
+  </div>
 
 
   <div class="relative mx-auto mb-20 lg:max-w-7xl">

@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white w-full mb-10 z-40 top-0 start-0 border-b">
+  <div class="bg-white w-full mb-10 z-40 top-0 start-0 border-b">
     <div
       class="max-w-screen-xl flex-nowrap flex items-center justify-between mx-auto p-4 md:flex-row flex-col-reverse"
     >
@@ -18,13 +18,13 @@
           >
         </a>
 
-        <form class="flex-grow mx-3 relative">
+        <div class="flex-grow mx-3 relative">
           <input
             type="search"
-            id="default-search"
+            v-model="keyword"
             class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Search"
-            required
+            @change="searchProduct"
           />
           <div
             class="absolute inset-y-0 end-0 flex items-center pr-3 pointer-events-none"
@@ -45,7 +45,7 @@
               />
             </svg>
           </div>
-        </form>
+        </div>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -76,7 +76,7 @@
           >
             <li>
               <router-link
-                :to="{name: 'painting'}"
+                :to="{ name: 'painting' }"
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 aria-current="page"
                 >Paintings</router-link
@@ -119,35 +119,47 @@
         >
           Sign up
         </button>
-        <router-link :to="{name: 'cart'  }" class="text-gray-500 item-end hover:text-blue-700 ms-5">
-        <svg
-          class="w-6 h-6"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 576 512"
+        <router-link
+          :to="{ name: 'cart' }"
+          class="text-gray-500 item-end hover:text-blue-700 ms-5"
         >
-        <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
-        </svg>
-        
-        <span class="sr-only">Discord community</span>
-      </router-link>
+          <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 576 512"
+          >
+            <path
+              d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+            />
+          </svg>
+
+          <span class="sr-only">Discord community</span>
+        </router-link>
       </div>
-      
     </div>
-  </nav>
+  </div>
   <login />
   <signup />
+  
 </template>
 <script setup>
 import login from "@/components/login.vue";
 import signup from "@/components/signup.vue";
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
-
+import { ref,computed} from "vue";
+import store from "../store";
 onMounted(() => {
   initFlowbite();
 });
+const searchnameProduct = computed(() => store.state.searchProduct);
+const keyword = ref("");
+
+function searchProduct() {
+  store.dispatch("searchProduct", keyword.value);
+}
 </script>
 
 <style scoped>

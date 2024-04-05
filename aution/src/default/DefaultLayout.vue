@@ -3,7 +3,7 @@ import Nav from "../components/TheHeader.vue";
 import navfooter from "../components/TheFooter.vue";
 </script>
 <template>
-  <Nav />
+  <Nav/>
 
   <router-view />
   <navfooter />

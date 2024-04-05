@@ -12,7 +12,7 @@
         >
           <img
             :style="imgStyle"
-            :src="product.imageUrl"
+            :src="productDetail.productImages[0].image_url"
             alt=""
             class="object-cover"
           />
@@ -24,20 +24,27 @@
           <div class="bg-black h-1 rounded-full" style="width: 25%"></div>
         </div>
       </div>
-      <div class="border m-5 border-gray-950">
+      <div class="border mx-5 border-x-gray-950 border-t-gray-950">
+        <div class="m-5">
+          <h2 class="text-sm ml-1 font-normal text-gray-950">
+            {{ productDetail.description }}
+          </h2>
+        </div>
+      </div>
+      <div class="border mx-5 mb-5 border-gray-950">
         <div class="m-5">
           <div class="flex">
             <h1 class="text-sm ml-1 w-80 font-normal text-gray-950">
-              Materials
+              Category
             </h1>
             <h2 class="text-sm ml-1 font-normal text-gray-950">
-              {{ product.materials }}
+              {{ productDetail.category.category_name }}
             </h2>
           </div>
           <div class="flex mt-5">
             <h1 class="text-sm ml-1 w-80 font-normal text-gray-950">Size</h1>
             <h2 class="text-sm ml-1 font-normal text-gray-950">
-              {{ product.size }}
+              {{ productDetail.size }}
             </h2>
           </div>
         </div>
@@ -46,23 +53,23 @@
     <div class="bg-slate-700 col-span-2">
       <div class="my-5 mx-10">
         <h1 class="text-xs ml-1 font-thin text-gray-950 sm:text-lg">
-          {{ product.lot }}
+          {{ productDetail.product_id }}
         </h1>
         <h2 class="text-sm ml-1 font-semibold text-gray-950 sm:text-2xl">
-          {{ product.author }}
+          {{ productDetail.author.author_name }}
         </h2>
 
         <div
           class="text-sm mb-5 italic font-semibold text-gray-600 sm:text-2xl"
         >
-          {{ product.name }}
+          {{ productDetail.product_name }}
         </div>
         <div class="my-5">
           <h1 class="text-xs ml-1 font-thin text-gray-950 sm:text-lg">
-            {{ product.materials }}
+            {{ productDetail.category.category_name }}
           </h1>
           <h1 class="text-xs ml-1 font-thin text-gray-950 sm:text-lg">
-            {{ product.size }}
+            {{ productDetail.size }}
           </h1>
         </div>
         <hr class="my-3 border-gray-500 sm:mx-auto lg:my-4" />
@@ -71,7 +78,7 @@
             Starting bid
           </h1>
           <h1 class="text-xs ml-1 font-semibold text-gray-950 sm:text-2xl">
-            ${{ product.price }}
+            ${{ productDetail.price }}
           </h1>
         </div>
         <hr class="my-3 border-gray-500 sm:mx-auto lg:my-4" />
@@ -82,7 +89,7 @@
           <input
             type="text"
             id="bid"
-            :placeholder="'$' + product.price"
+            :placeholder="'$' + productDetail.price"
             class="w-full rounded-full border-gray-200"
           />
           <button
@@ -95,6 +102,7 @@
       </div>
     </div>
   </div>
+  <pre>{{ productDetail }}</pre>
 </template>
 
 <script>
@@ -129,4 +137,19 @@ export default {
     },
   },
 };
+</script>
+
+<script setup>
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+import axiosClient from "@/axiosClient";
+
+const router = useRoute();
+const productDetail = ref({});
+
+onMounted(() => {
+  axiosClient.get(`/product/${router.params.product_id}`).then(({ data }) => {
+    productDetail.value = data;
+  });
+});
 </script>
