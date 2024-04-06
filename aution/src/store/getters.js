@@ -1,3 +1,5 @@
-// export default{
-//     searchProduct: state=> state.searchProduct
-// }
+
+export const getters = {
+    categories: state => state.categories
+  };
+  

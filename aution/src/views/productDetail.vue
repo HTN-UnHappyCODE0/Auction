@@ -11,6 +11,10 @@
           class="flex justify-center items-center overflow-hidden w-7/12"
         >
           <img
+            v-if="
+              productDetail.productImages &&
+              productDetail.productImages.length > 0
+            "
             :style="imgStyle"
             :src="productDetail.productImages[0].image_url"
             alt=""
@@ -18,7 +22,7 @@
           />
         </div>
       </div>
-      <div class="text-xl mx-5 mt-10 font-normal text-gray-950">
+      <div class="text-xl mx-5 mt-10 font-normal text-gray-950" >
         About the the work
         <div class="w-full bg-gray-200 rounded-full h-1 mb-4">
           <div class="bg-black h-1 rounded-full" style="width: 25%"></div>
@@ -37,7 +41,7 @@
             <h1 class="text-sm ml-1 w-80 font-normal text-gray-950">
               Category
             </h1>
-            <h2 class="text-sm ml-1 font-normal text-gray-950">
+            <h2 class="text-sm ml-1 font-normal text-gray-950" v-if="productDetail.category">
               {{ productDetail.category.category_name }}
             </h2>
           </div>
@@ -55,7 +59,7 @@
         <h1 class="text-xs ml-1 font-thin text-gray-950 sm:text-lg">
           {{ productDetail.product_id }}
         </h1>
-        <h2 class="text-sm ml-1 font-semibold text-gray-950 sm:text-2xl">
+        <h2 class="text-sm ml-1 font-semibold text-gray-950 sm:text-2xl" v-if="productDetail.author">
           {{ productDetail.author.author_name }}
         </h2>
 
@@ -65,7 +69,7 @@
           {{ productDetail.product_name }}
         </div>
         <div class="my-5">
-          <h1 class="text-xs ml-1 font-thin text-gray-950 sm:text-lg">
+          <h1 class="text-xs ml-1 font-thin text-gray-950 sm:text-lg" v-if="productDetail.category">
             {{ productDetail.category.category_name }}
           </h1>
           <h1 class="text-xs ml-1 font-thin text-gray-950 sm:text-lg">
@@ -102,27 +106,27 @@
       </div>
     </div>
   </div>
-  <pre>{{ productDetail }}</pre>
+  
 </template>
 
 <script>
-import data from "../../public/data.json";
+// import data from "../../public/data.json";
 
 export default {
   data() {
     return {
-      product: {},
+      // product: {},
       imgStyle: {
         transformOrigin: "center",
         transform: "",
       },
     };
   },
-  created() {
-    const productName = this.$route.params.productName;
+  // created() {
+  //   const productName = this.$route.params.productName;
 
-    this.product = data.find((item) => item.name === productName);
-  },
+  //   this.product = data.find((item) => item.name === productName);
+  // },
   methods: {
     handleMouseMove(event) {
       const x = event.clientX - event.target.offsetLeft;
@@ -143,13 +147,14 @@ export default {
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import axiosClient from "@/axiosClient";
+import store from "@/store";
 
 const router = useRoute();
 const productDetail = ref({});
 
 onMounted(() => {
-  axiosClient.get(`/product/${router.params.product_id}`).then(({ data }) => {
-    productDetail.value = data;
+  store.dispatch("fetchProductDetail", router.params.product_id).then(() => {
+    productDetail.value = store.state.productDetail;
   });
 });
 </script>

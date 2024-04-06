@@ -65,13 +65,13 @@
     </button>
     <div>
       <select
-        id="default"
-        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5"
-      >
-        <option selected>All</option>
-        <option value="US">Tranh</option>
-        <option value="CA">Ảnh</option>
-      </select>
+      id="default"
+      class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 p-2.5"
+      v-model="selectedCategory"
+    >
+      <option value="0">All</option>
+      <option v-for="category in categories" :key="category.category_id" :value="category.category_id">{{ category.category_name }}</option>
+    </select>
     </div>
   </div>
 
@@ -134,7 +134,7 @@
       </li>
     </ul>
 
-    <!-- <fwb-pagination
+    <fwb-pagination
       v-model="currentPage"
       :total-items="totalItems"
       :total-pages="totalPages"
@@ -151,27 +151,15 @@
           {{ page }}
         </button>
       </template>
-    </fwb-pagination> -->
+    </fwb-pagination>
     <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
   </div>
   <drawer @update:selectedCategories="handleselectedCategoriesUpdate" />
-  <!-- search axios products -->
-  <!-- <div class="p-8">
-    <input
-      type="text"
-      v-model="keyword"
-      class="rounded border-2 border-gray-200 w-full"
-      placeholder="Search for Meals"
-      @change="searchProduct"
-    />
-  </div> -->
-
-  <!-- <pre>{{ searchnameProduct }}</pre> -->
 </template>
 
 <script>
 import data from "../../public/data.json";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -182,6 +170,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['fetchProductByCategory']),
     toggleSort() {
       this.openSort = !this.openSort;
     },
@@ -205,10 +194,17 @@ export default {
       this.$emit("updateSelectedSizes", updatedSizes);
     },
   },
-
-  // computed: {
-  //   ...mapGetters(['searchProduct'])
-  // },
+  computed: {
+    ...mapGetters(['categories'])
+  },
+  data() {
+    return {
+      selectedCategory: "0"
+    };
+  },
+  mounted() {
+    this.fetchProductByCategory();
+  },
 };
 </script>
 
@@ -226,10 +222,7 @@ onMounted(() => {
  
 });
 
-// onMounted(async () => {
-//   const response = await axiosClient.get('/product')
-//   console.log(response.data)
-// })
+
 
 const currentPage = ref(1);
 const totalItems = ref(data.length);
@@ -240,11 +233,7 @@ const slicedProducts = computed(() => {
   return data.slice(start, start + 9);
 });
 
-//search axios products
 
-// const keyword = ref("");
 const searchnameProduct = computed(() => store.state.searchProduct);
-// function searchProduct() {
-//   store.dispatch('searchProduct', keyword.value);
-// }
+
 </script>
