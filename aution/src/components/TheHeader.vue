@@ -154,7 +154,7 @@ import store from "../store";
 onMounted(() => {
   initFlowbite();
 });
-const searchnameProduct = computed(() => store.state.searchProduct);
+
 const keyword = ref("");
 
 function searchProduct() {

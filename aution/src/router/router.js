@@ -9,6 +9,7 @@ import cart from "@/views/cart.vue";
 import ProductDetail from "../views/productDetail.vue";
 import DefaultLayout from "../default/DefaultLayout.vue";
 import painting from "@/views/painting.vue";
+import Category from "../views/category.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -29,6 +30,11 @@ const router = createRouter({
           path: "/artwork/:product_id",
           component: ProductDetail,
         },
+        {
+          path: '/:categoryName', 
+          name: 'Category',
+          component: Category,
+        }
       ],
     },
   ],

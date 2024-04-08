@@ -7,6 +7,13 @@ export function searchProduct({ commit },keyword) {
   });
 }
 
+export function getProduct({ commit },category_id) {
+  axiosClient.get(`product/category/${category_id}`)
+  .then(({data}) => {
+    commit('getListProduct', data);
+  });
+}
+
 export function  fetchProductDetail({ commit }, productId) {
   return axiosClient.get(`/product/${productId}`)
     .then(({ data }) => {
@@ -22,6 +29,4 @@ export function fetchProductByCategory({ commit }) {
       .then(({ data }) => {
         commit('SET_CATEGORIES', data);
       })
-    
-  
 };

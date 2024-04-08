@@ -1,8 +1,9 @@
 <template>
- 
   <div class="h-30 mt-10 mx-auto max-w-screen-xl">
     <div class="xl:flex flex-wrap justify-between">
-      <h2 class="mb-5 text-2xl mx-8 max-w-lg lg:max-w-lg lg:text-4xl">Ảnh</h2>
+      <h2 class="mb-5 text-2xl mx-8 max-w-lg lg:max-w-lg lg:text-4xl">
+        {{ selectedCategory }}
+      </h2>
       <h2 class="text-1xl mx-8 max-w-lg lg:max-w-lg lg:text-1xl">
         Với 161.382 bản in phiên bản giới hạn và phiên bản mở để bạn lựa chọn,
         cung cấp những bức ảnh chất lượng cao hoàn toàn phù hợp với không gian
@@ -112,7 +113,7 @@
 
     <ul class="my-8 mx-8 columns-2 lg:columns-3">
       <li
-        v-for="item of searchnameProduct"
+        v-for="item of productList"
         :key="item.product_id"
         class="h-full"
       >
@@ -165,6 +166,7 @@
     </fwb-pagination>
     <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
   </div>
+  <pre>{{ productList }}</pre>
   <drawer @update:selectedCategories="handleselectedCategoriesUpdate" />
 </template>
 
@@ -178,6 +180,7 @@ export default {
       selectedCategories: [],
       openSort: true,
       sortType: "Sort by",
+      selectedCategory: "0",
     };
   },
   methods: {
@@ -204,24 +207,22 @@ export default {
       });
       this.$emit("updateSelectedSizes", updatedSizes);
     },
+    
     navigateToCategory() {
-      if (this.selectedCategory !== '0') {
-        
-        this.$router.push({ name: 'Category', params: { categoryName: this.selectedCategory } });
+      if (this.selectedCategory !== "0") {
+        this.$router.push({
+          name: "Category",
+          params: { categoryName: this.selectedCategory },
+        });
       } else {
-        
-        this.$router.push('/');
+        this.$router.push("/");
       }
-    }
+    },
   },
   computed: {
     ...mapGetters(["categories"]),
   },
-  data() {
-    return {
-      selectedCategory: "0",
-    };
-  },
+
   mounted() {
     this.fetchProductByCategory();
   },
@@ -235,9 +236,20 @@ import { ref, computed } from "vue";
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
 import store from "../store";
+import { useRoute } from "vue-router"; 
+const router = useRoute();
+
+onMounted(() => {
+  store.dispatch("getProduct", router.params.categoryName);
+ 
+});
+
 
 onMounted(() => {
   initFlowbite();
+
+  // const categoryId = this.selectedCategory;
+  // store.dispatch("getProduct", categoryId);
 });
 
 const currentPage = ref(1);
@@ -248,6 +260,6 @@ const slicedProducts = computed(() => {
   const start = (currentPage.value - 1) * 9;
   return data.slice(start, start + 9);
 });
-
+const productList = computed(() => store.state.listProducts);
 const searchnameProduct = computed(() => store.state.searchProduct);
 </script>

@@ -1,10 +1,11 @@
 export default {
-    searchProduct: [], 
+    searchProduct: [], listProducts: [],
     totalPage: null,
     productDetail: {},
     a: [],
 
     state: {
         categories: []
+        
       }
 }

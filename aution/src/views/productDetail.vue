@@ -146,7 +146,6 @@ export default {
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import axiosClient from "@/axiosClient";
 import store from "@/store";
 
 const router = useRoute();
