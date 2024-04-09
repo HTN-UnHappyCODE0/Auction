@@ -20,8 +20,7 @@ const router = createRouter({
       children: [
         { path: "/", component: home, name: "home" },
         { path: "/auction", component: auction, name: "auction" },
-        { path: "/artworks", component: artwork, name: "artworks" },
-        { path: "/painting", component: painting, name: "painting" },
+        
 
         { path: "/cart", component: cart, name: "cart" },
         { path: "/live", component: live, name: "live" },

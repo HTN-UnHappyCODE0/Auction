@@ -73,7 +73,7 @@
       <option
         v-for="category in categories"
         :key="category.category_id"
-        :value="category.category_id"
+        :value="category.category_name"
       >
         {{ category.category_name }}
       </option>
@@ -113,7 +113,7 @@
 
     <ul class="my-8 mx-8 columns-2 lg:columns-3">
       <li
-        v-for="item of productList"
+        v-for="item of listProducts"
         :key="item.product_id"
         class="h-full"
       >
@@ -166,13 +166,15 @@
     </fwb-pagination>
     <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
   </div>
-  <pre>{{ productList }}</pre>
+  <pre>{{ listProducts }}</pre>
   <drawer @update:selectedCategories="handleselectedCategoriesUpdate" />
 </template>
 
 <script>
 import data from "../../public/data.json";
 import { mapGetters, mapActions } from "vuex";
+
+
 export default {
   data() {
     return {
@@ -184,7 +186,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchProductByCategory"]),
+    ...mapActions(["fetchProductByCategory", "getProduct"]),
     toggleSort() {
       this.openSort = !this.openSort;
     },
@@ -214,13 +216,16 @@ export default {
           name: "Category",
           params: { categoryName: this.selectedCategory },
         });
+        this.getProduct(this.selectedCategory);
       } else {
         this.$router.push("/");
       }
+  
+      
     },
   },
   computed: {
-    ...mapGetters(["categories"]),
+    ...mapGetters(["categories", "listProducts"]),
   },
 
   mounted() {
@@ -239,10 +244,9 @@ import store from "../store";
 import { useRoute } from "vue-router"; 
 const router = useRoute();
 
-onMounted(() => {
-  store.dispatch("getProduct", router.params.categoryName);
- 
-});
+// onMounted(() => {
+//   store.dispatch("getProduct", router.params.categoryName);
+// });
 
 
 onMounted(() => {
@@ -260,6 +264,6 @@ const slicedProducts = computed(() => {
   const start = (currentPage.value - 1) * 9;
   return data.slice(start, start + 9);
 });
-const productList = computed(() => store.state.listProducts);
-const searchnameProduct = computed(() => store.state.searchProduct);
+// const productList = computed(() => store.state.listProducts);
+// const searchnameProduct = computed(() => store.state.searchProduct);
 </script>

@@ -72,7 +72,7 @@
       <option
         v-for="category in categories"
         :key="category.category_id"
-        :value="category.category_id"
+        :value="category.category_name"
       >
         {{ category.category_name }}
       </option>
@@ -209,7 +209,6 @@ export default {
         
         this.$router.push({ name: 'Category', params: { categoryName: this.selectedCategory } });
       } else {
-        
         this.$router.push('/');
       }
     }
