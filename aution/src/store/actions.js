@@ -7,12 +7,30 @@ export function searchProduct({ commit },keyword) {
   });
 }
 
-export function getProduct({ commit },category_id) {
-  axiosClient.get(`Product/category/name/${category_id}`)
-  .then(({data}) => {
-    commit('getListProduct', data);
-  });
+export function getProduct({ commit }, category_name) {
+  let url = "/Product"; 
+  if (category_name.toLowerCase() === "all") {
+    url = '/Product';
+    axiosClient.get(url)
+    .then(({ data }) => {
+      commit('getListProduct', data.products);
+    })
+    .catch(error => {
+      console.error('Error getting product:', error);
+    });
+  } else {
+    url = `Product/category/name/${category_name}`;
+    axiosClient.get(url)
+    .then(({ data }) => {
+      commit('getListProduct', data);
+    })
+    .catch(error => {
+      console.error('Error getting product:', error);
+    });
+  }
+  
 }
+
 
 export function  fetchProductDetail({ commit }, productId) {
   return axiosClient.get(`/product/${productId}`)

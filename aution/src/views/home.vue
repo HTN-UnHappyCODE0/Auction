@@ -108,9 +108,9 @@
     <div class="items-center xl:flex xl:my-10">
       <h1 class="font-medium mx-10 text-xl xl:mx-0">Lựa chọn theo thể loại</h1>
       <div class="mt-5 mx-10 flex-grow justify-evenly flex xl:mt-0">
-        <selectCategoryButton :href="{ name: 'painting' }"> Tranh</selectCategoryButton />
-        <selectCategoryButton :href="{ name: 'artworks' }"> Ảnh</selectCategoryButton />
-        <selectCategoryButton :href="{ name: 'artworks' }"> ???</selectCategoryButton />
+        <selectCategoryButton :href="{ name: 'category_excepturi' }"> Tranh</selectCategoryButton />
+        <selectCategoryButton :href="{ name: 'category_excepturi' }"> Ảnh</selectCategoryButton />
+        <selectCategoryButton :href="{ name: 'category_excepturi' }"> ???</selectCategoryButton />
       </div>
     </div>
 
@@ -229,6 +229,11 @@ import selectCategoryButton from "@/components/SelectCategoryButton.vue";
 import data from "../../public/data.json";
 import datatrend from "../../public/datatrend.json";
 import dataArtist from "../../public/dataArtist.json";
+import { onMounted } from "vue";
+import { initFlowbite } from "flowbite";
+onMounted(() => {
+  initFlowbite();
+});
 export default {
   data() {
     return {

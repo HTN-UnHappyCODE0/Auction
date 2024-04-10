@@ -76,19 +76,19 @@
           >
             <li>
               <router-link
-                :to="{ name: 'CategoryCategory',params: { categoryName: 'paintings' }, }"
+              :to="{ name: 'Category', params: { categoryName: 'category_ipsum' } }"
                 
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 aria-current="page"
-                >Paintings</router-link
+                >category_ipsum</router-link
               >
             </li>
             <li>
               <router-link
-                :to="{ name: 'artworks' }"
+              :to="{ name: 'Category', params: { categoryName: 'category_excepturi' } }"
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
                 aria-current="page"
-                >Photography</router-link
+                >category_excepturi</router-link
               >
             </li>
             <li>

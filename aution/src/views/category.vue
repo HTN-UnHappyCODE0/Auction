@@ -69,7 +69,7 @@
       v-model="selectedCategory"
       @change="navigateToCategory"
     >
-      <option value="0">All</option>
+      <option value="All">All</option>
       <option
         v-for="category in categories"
         :key="category.category_id"
@@ -112,11 +112,7 @@
       </div> -->
 
     <ul class="my-8 mx-8 columns-2 lg:columns-3">
-      <li
-        v-for="item of listProducts"
-        :key="item.product_id"
-        class="h-full"
-      >
+      <li v-for="item of listProducts" :key="item.product_id" class="h-full">
         <router-link
           :to="{
             name: 'productDetail',
@@ -174,7 +170,6 @@
 import data from "../../public/data.json";
 import { mapGetters, mapActions } from "vuex";
 
-
 export default {
   data() {
     return {
@@ -209,7 +204,7 @@ export default {
       });
       this.$emit("updateSelectedSizes", updatedSizes);
     },
-    
+
     navigateToCategory() {
       if (this.selectedCategory !== "0") {
         this.$router.push({
@@ -220,8 +215,6 @@ export default {
       } else {
         this.$router.push("/");
       }
-  
-      
     },
   },
   computed: {
@@ -229,6 +222,11 @@ export default {
   },
 
   mounted() {
+    const router = useRoute();
+    const categoryName = router.params.categoryName; // Lấy giá trị từ đường dẫn
+    if (categoryName !== undefined) {
+      this.selectedCategory = categoryName; // Gán giá trị từ đường dẫn cho selectedCategory
+    }
     this.fetchProductByCategory();
   },
 };
@@ -237,24 +235,26 @@ export default {
 <script setup>
 import drawer from "../components/drawer.vue";
 import { FwbPagination } from "flowbite-vue";
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
 import store from "../store";
-import { useRoute } from "vue-router"; 
+import { useRoute } from "vue-router";
 const router = useRoute();
-
-// onMounted(() => {
-//   store.dispatch("getProduct", router.params.categoryName);
-// });
-
 
 onMounted(() => {
   initFlowbite();
-
-  // const categoryId = this.selectedCategory;
-  // store.dispatch("getProduct", categoryId);
+  store.dispatch("getProduct", router.params.categoryName);
 });
+
+watch(
+  () => router.params.categoryName,
+  (newCategoryName, oldCategoryName) => {
+    if (newCategoryName !== oldCategoryName) {
+      store.dispatch("getProduct", newCategoryName);
+    }
+  }
+);
 
 const currentPage = ref(1);
 const totalItems = ref(data.length);
@@ -264,6 +264,4 @@ const slicedProducts = computed(() => {
   const start = (currentPage.value - 1) * 9;
   return data.slice(start, start + 9);
 });
-// const productList = computed(() => store.state.listProducts);
-// const searchnameProduct = computed(() => store.state.searchProduct);
 </script>
