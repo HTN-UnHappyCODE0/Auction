@@ -17,14 +17,14 @@
       </svg>
       <span class="sr-only">Close menu</span>
     </button>
-    <h1>Colors checked: {{ selectedCategories.join(", ") }}</h1>
+    <h1>Colors checked: {{ selectedFilter.join(", ") }}</h1>
     <form class="mt-4 border-t">
       <div id="accordion-collapse" data-accordion="collapse" class="py-3 px-2">
         <h2 id="accordion-collapse-heading-1">
           <button type="button" class="flex w-full bg-inherit items-center justify-between"
             data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
             aria-controls="accordion-collapse-body-1">
-            <span class="font-medium text-gray-900">Color</span>
+            <span class="font-medium text-gray-900">Style</span>
             <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,11 +35,11 @@
         <div id="accordion-collapse-body-1" class="hidden px-2" aria-labelledby="accordion-collapse-heading-1">
           <div class="pt-6">
             <div class="space-y-6">
-              <div v-for="(color, index) in colors" :key="index" class="flex items-center">
-                <input :id="'filter-mobile-rarity-' + index" :name="'rarity[]'" :value="color.value" type="checkbox"
+              <div v-for="(style, index) in colors" :key="index" class="flex items-center">
+                <input :id="'filter-mobile-rarity-' + index" :name="'rarity[]'" :value="style.value" type="checkbox"
                   class="h-4 w-4 rounded border-gray-300 text-blue-700 focus:ring-indigo-500"
-                  :checked="isChecked(color.value)" @change="updateSelectedCategories(color.value)" />
-                <label :for="'filter-mobile-rarity-' + index" class="ml-3 min-w-0 flex-1 text-gray-500">{{ color.label
+                  :checked="isChecked(style.value)" @change="updateselectedFilter(style.value)" />
+                <label :for="'filter-mobile-rarity-' + index" class="ml-3 min-w-0 flex-1 text-gray-500">{{ style.label
                   }}</label>
               </div>
             </div>
@@ -52,7 +52,7 @@
           <button type="button" class="flex w-full bg-inherit items-center justify-between"
             data-accordion-target="#accordion-collapse1-body-1" aria-expanded="true"
             aria-controls="accordion-collapse1-body-1">
-            <span class="font-medium text-gray-900">rarity</span>
+            <span class="font-medium text-gray-900">SUBJECT</span>
             <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -63,11 +63,11 @@
         <div id="accordion-collapse1-body-1" class="hidden px-2" aria-labelledby="accordion-collapse1-heading-1">
           <div class="pt-6">
             <div class="space-y-6">
-              <div v-for="(rarity, index) in rarities" :key="index" class="flex items-center">
-                <input :id="'filter-mobile-rarity-' + index" :name="'rarity[]'" :value="rarity.value" type="checkbox"
+              <div v-for="(subject, index) in rarities" :key="index" class="flex items-center">
+                <input :id="'filter-mobile-rarity-' + index" :name="'rarity[]'" :value="subject.value" type="checkbox"
                   class="h-4 w-4 rounded border-gray-300 text-blue-700 focus:ring-indigo-500"
-                  :checked="isChecked(rarity.value)" @change="updateSelectedCategories(rarity.value)" />
-                <label :for="'filter-mobile-rarity-' + index" class="ml-3 min-w-0 flex-1 text-gray-500">{{ rarity.label
+                  :checked="isChecked(subject.value)" @change="updateselectedFilter(subject.value)" />
+                <label :for="'filter-mobile-rarity-' + index" class="ml-3 min-w-0 flex-1 text-gray-500">{{ subject.label
                   }}</label>
               </div>
             </div>
@@ -149,6 +149,34 @@
           </div>
         </div>
       </div>
+
+      <!-- <div id="accordion-collapse2" data-accordion="collapse2" class="border-t border-gray-200 py-3 px-2">
+        <h2 id="accordion-collapse2-heading-1">
+          <button type="button" class="flex w-full bg-inherit items-center justify-between"
+            data-accordion-target="#accordion-collapse2-body-1" aria-expanded="true"
+            aria-controls="accordion-collapse2-body-1">
+            <span class="font-medium text-gray-900">MATERIAL</span>
+            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5 5 1 1 5" />
+            </svg>
+          </button>
+        </h2>
+        <div id="accordion-collapse2-body-1" class="hidden px-2" aria-labelledby="accordion-collapse2-heading-1">
+          <div class="pt-6">
+            <div class="space-y-6">
+              <div v-for="(material, index) in sizes" :key="index" class="flex items-center">
+                <input :id="'' + index" :name="'rarity[]'" :value="material.value" type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-blue-700 focus:ring-indigo-500"
+                  :checked="isChecked(material.value)" @change="updateselectedFilter(material.value)" />
+                <label :for="'filter-mobile-rarity-' + index" class="ml-3 min-w-0 flex-1 text-gray-500">{{ material.label
+                  }}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
       <div id="accordion-collapse2" data-accordion="collapse2" class="border-t border-gray-200 py-3 px-2">
         <h2 id="accordion-collapse2-heading-1">
           <button type="button" class="flex w-full bg-inherit items-center justify-between"
@@ -168,7 +196,7 @@
               <div v-for="(size, index) in sizes" :key="index" class="flex items-center">
                 <input :id="'' + index" :name="'rarity[]'" :value="size.value" type="checkbox"
                   class="h-4 w-4 rounded border-gray-300 text-blue-700 focus:ring-indigo-500"
-                  :checked="isChecked(size.value)" @change="updateSelectedCategories(size.value)" />
+                  :checked="isChecked(size.value)" @change="updateselectedFilter(size.value)" />
                 <label :for="'filter-mobile-rarity-' + index" class="ml-3 min-w-0 flex-1 text-gray-500">{{ size.label
                   }}</label>
               </div>
@@ -203,21 +231,21 @@ export default {
       max: 10000,
       minthumb: 0,
       maxthumb: 0,
-      selectedCategories: [],
+      selectedFilter: [],
     };
   },
   methods: {
-    updateSelectedCategories(categoryValue) {
-      const index = this.selectedCategories.indexOf(categoryValue);
+    updateselectedFilter(categoryValue) {
+      const index = this.selectedFilter.indexOf(categoryValue);
       if (index === -1) {
-        this.selectedCategories.push(categoryValue);
+        this.selectedFilter.push(categoryValue);
       } else {
-        this.selectedCategories.splice(index, 1);
+        this.selectedFilter.splice(index, 1);
       }
-      this.$emit("update:selectedCategories", this.selectedCategories);
+      this.$emit("update:selectedFilter", this.selectedFilter);
     },
     isChecked(categoryValuec) {
-      return this.selectedCategories.includes(categoryValuec);
+      return this.selectedFilter.includes(categoryValuec);
     },
     range() {
       this.mintrigger();

@@ -7,6 +7,8 @@ export function getListProduct(state,product){
     state.listProducts = product
 }
 
+
+
 export function SET_PRODUCT_DETAIL(state, product) {
     state.productDetail = product;
 }

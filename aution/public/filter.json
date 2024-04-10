@@ -1,22 +1,22 @@
 {
     "rarities": [
-      { "label": "Unique", "value": "Unique","checked": false },
-      { "label": "Limited", "value": "Limited","checked": false },
-      { "label": "Open Edition", "value": "Open Edition","checked": false },
-      { "label": "Rare", "value": "Rare","checked": false },
+      { "label": "Unique", "value": "Unique" },
+      { "label": "Limited", "value": "Limited"},
+      { "label": "Open Edition", "value": "Open Edition"},
+      { "label": "Rare", "value": "Rare"},
       { "label": "Super Rare", "value": "Super Rare" ,"checked": false}
     ],
     "sizes": [
-      { "label": "Small (Under 40 cm)", "value": "Small","checked": false },
-      { "label": "Medium (40 cm -100 cm)", "value": "Medium","checked": false },
-      { "label": "Large (100 cm - 200 cm)", "value": "Large","checked": false },
-      { "label": "Extra Large (Over 200 cm)", "value": "Extra Large","checked": false }
+      { "label": "Small (Under 40 cm)", "value": "Small"},
+      { "label": "Medium (40 cm -100 cm)", "value": "Medium"},
+      { "label": "Large (100 cm - 200 cm)", "value": "Large"},
+      { "label": "Extra Large (Over 200 cm)", "value": "Extra Large"}
     ],
     "colors":[
-        { "label": "White", "value": "white","checked": false },
+        { "label": "White", "value": "white"},
         { "label": "Beige", "value": "beige","checked": false},
-        { "label": "Brown", "value": "brown","checked": false },
-        { "label": "Green", "value": "green","checked": false },
-        { "label": "Purple", "value": "purple","checked": false }
+        { "label": "Brown", "value": "brown"},
+        { "label": "Green", "value": "green"},
+        { "label": "Purple", "value": "purple"}
     ]
 }

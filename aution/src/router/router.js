@@ -26,7 +26,7 @@ const router = createRouter({
         { path: "/live", component: live, name: "live" },
         {
           name: "productDetail",
-          path: "/artwork/:product_id",
+          path: "/art/:product_id",
           component: ProductDetail,
         },
         {

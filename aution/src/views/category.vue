@@ -83,7 +83,7 @@
   <div class="flex flex-wrap mx-auto max-w-screen-xl">
     <div class="ml-8">
       <button
-        v-for="(color, index) in selectedCategories"
+        v-for="(color, index) in selectedFilter"
         :key="index"
         type="button"
         class="text-gray-950 bg-gray-300 rounded-full border border-inherit hover:text-blue-700 hover:border-blue-700 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
@@ -130,7 +130,7 @@
               />
               <div class="mt-2">
                 <h3 class="text-lg font-bold text-gray-700">
-                  item.product_name
+                  {{item.product_name}}
                 </h3>
                 <h4 class="text-sm font-bold text-gray-500">
                   {{ item.description }}
@@ -163,7 +163,7 @@
     <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
   </div>
   <pre>{{ listProducts }}</pre>
-  <drawer @update:selectedCategories="handleselectedCategoriesUpdate" />
+  <drawer @update:selectedFilter="handleselectedFilterUpdate" />
 </template>
 
 <script>
@@ -174,7 +174,7 @@ export default {
   data() {
     return {
       items: data,
-      selectedCategories: [],
+      selectedFilter: [],
       openSort: true,
       sortType: "Sort by",
       selectedCategory: "0",
@@ -189,11 +189,11 @@ export default {
       this.sortType = type;
       this.openSort = !this.openSort;
     },
-    handleselectedCategoriesUpdate(selectedCategories) {
-      this.selectedCategories = selectedCategories;
+    handleselectedFilterUpdate(selectedFilter) {
+      this.selectedFilter = selectedFilter;
     },
     removeColor(index) {
-      this.selectedCategories.splice(index, 1);
+      this.selectedFilter.splice(index, 1);
     },
     removeSize(sizeValue) {
       const updatedSizes = this.sizes.map((size) => {
