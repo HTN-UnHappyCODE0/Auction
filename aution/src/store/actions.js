@@ -26,7 +26,7 @@ export function searchProduct({ commit },keyword) {
 // }
 
 export function getProduct({ commit }, { category_name, styles, subjects, materials, sizes }) {
-  debugger
+  
   let url = "/Product";
  
   if (category_name && category_name.toLowerCase() !== "all") {
