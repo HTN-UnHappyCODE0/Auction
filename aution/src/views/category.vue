@@ -162,7 +162,7 @@
     </fwb-pagination>
     <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
   </div>
-  <pre>{{ listProducts }}</pre>
+  <!-- <pre>{{ listProducts }}</pre> -->
   <drawer @update:selectedFilter="handleselectedFilterUpdate" />
 </template>
 
@@ -223,11 +223,18 @@ export default {
 
   mounted() {
     const router = useRoute();
-    const categoryName = router.params.categoryName; // Lấy giá trị từ đường dẫn
+    const categoryName = router.params.categoryName; 
     if (categoryName !== undefined) {
-      this.selectedCategory = categoryName; // Gán giá trị từ đường dẫn cho selectedCategory
+      this.selectedCategory = categoryName; 
     }
     this.fetchProductByCategory();
+    watch(
+    () => router.params.categoryName,
+    (newCategoryName, oldCategoryName) => {
+      if (newCategoryName !== oldCategoryName) {
+        this.selectedCategory = newCategoryName;
+      }
+    });
   },
 };
 </script>
@@ -246,15 +253,6 @@ onMounted(() => {
   initFlowbite();
   store.dispatch("getProduct", router.params.categoryName);
 });
-
-watch(
-  () => router.params.categoryName,
-  (newCategoryName, oldCategoryName) => {
-    if (newCategoryName !== oldCategoryName) {
-      store.dispatch("getProduct", newCategoryName);
-    }
-  }
-);
 
 const currentPage = ref(1);
 const totalItems = ref(data.length);
