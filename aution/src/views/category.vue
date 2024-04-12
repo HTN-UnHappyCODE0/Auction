@@ -74,59 +74,66 @@
       </button>
     </div>
   </div>
-  <div class="h-full mt-10 mx-auto max-w-screen-xl">
-    <ul class="my-8 mx-8 columns-2 lg:columns-3">
-      <li v-for="item of listProducts" :key="item.product_id" class="h-full">
-        <router-link
-          :to="{
-            name: 'productDetail',
-            params: { product_id: item.product_id },
-          }"
-        >
-          <div class="group min-w-10 mb-5 relative">
-            <div
-              class="w-full overflow-hidden rounded-md bg-white group-hover:opacity-75 lg:h-full"
-            >
-              <img
-                :src="item.productImages[0].image_url"
-                :alt="item.price"
-                class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-              />
-              <div class="mt-2">
-                <h3 class="text-lg font-bold text-gray-700">
-                  {{ item.product_name }}
-                </h3>
-                <h4 class="text-sm font-bold text-gray-500">
-                  {{ item.description }}
-                </h4>
+  <template v-if="listProducts.length > 0">
+    <div class="h-full mt-10 mx-auto max-w-screen-xl">
+      <ul class="my-8 mx-8 columns-2 lg:columns-3">
+        <li v-for="item of listProducts" :key="item.product_id" class="h-full">
+          <router-link
+            :to="{
+              name: 'productDetail',
+              params: { product_id: item.product_id },
+            }"
+          >
+            <div class="group min-w-10 mb-5 relative">
+              <div
+                class="w-full overflow-hidden rounded-md bg-white group-hover:opacity-75 lg:h-full"
+              >
+                <img
+                  :src="item.productImages[0].image_url"
+                  :alt="item.price"
+                  class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                />
+                <div class="mt-2">
+                  <h3 class="text-lg font-bold text-gray-700">
+                    {{ item.product_name }}
+                  </h3>
+                  <h4 class="text-sm font-bold text-gray-500">
+                    {{ item.description }}
+                  </h4>
+                </div>
               </div>
             </div>
-          </div>
-        </router-link>
-      </li>
-    </ul>
+          </router-link>
+        </li>
+      </ul>
 
-    <fwb-pagination
-      v-model="currentPage"
-      :total-items="totalItems"
-      :total-pages="totalPages"
-      :show-labels="false"
-      class="flex mt-10 max-w-screen-xl mx-auto justify-center"
-    >
-      <template #prev-icon>Prev</template>
-      <template #next-icon>Next</template>
-      <template v-slot:page-button="{ page, setPage }">
-        <button
-          @click="setPage(page)"
-          class="flex items-center justify-center first:rounded-l-lg last:rounded-r-lg px-3 h-8 ml-0 leading-tight text-gray-500 border border-white hover:text-gray-700 hover:underline"
-        >
-          {{ page }}
-        </button>
-      </template>
-    </fwb-pagination>
-    <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-  </div>
-  <pre>{{ selectedFilter }}</pre>
+      <fwb-pagination
+        v-model="currentPage"
+        :total-items="totalItems"
+        :total-pages="totalPages"
+        :show-labels="false"
+        class="flex mt-10 max-w-screen-xl mx-auto justify-center"
+      >
+        <template #prev-icon>Prev</template>
+        <template #next-icon>Next</template>
+        <template v-slot:page-button="{ page, setPage }">
+          <button
+            @click="setPage(page)"
+            class="flex items-center justify-center first:rounded-l-lg last:rounded-r-lg px-3 h-8 ml-0 leading-tight text-gray-500 border border-white hover:text-gray-700 hover:underline"
+          >
+            {{ page }}
+          </button>
+        </template>
+      </fwb-pagination>
+      <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+    </div>
+  </template>
+  <template v-else>
+    <div class="text-gray-800 text-2xl text-center my-40 font-bold w-full">
+      Sorry, no results were found for that query.
+    </div>
+  </template>
+ 
   <drawer @update:selectedFilter="handleselectedFilterUpdate" />
 </template>
 
@@ -159,9 +166,9 @@ export default {
 
       this.selectedFilter.splice(index, 1);
 
-      if (this.selectedFilter.length === 0) {
-        this.selectedCategory = "All";
-      }
+      // if (this.selectedFilter.length === 0) {
+      //   this.selectedCategory = "All";
+      // }
 
       this.filterProducts();
     },
@@ -213,16 +220,20 @@ export default {
       return filter ? filter.values : [];
     },
     getCategoryDescription(categoryName) {
-     
+      if (!this.categories) {
+        console.error("this.categories is undefined");
+        return "";
+      }
+
       const category = this.categories.find(
         (cat) => cat.category_name === categoryName
       );
+
       return category ? category.category_description : "";
     },
   },
   computed: {
     ...mapGetters(["categories", "listProducts"]),
-    
   },
   watch: {
     selectedFilter: {
@@ -240,7 +251,7 @@ export default {
   },
 
   mounted() {
-    const router = this.$route;
+    const router = useRoute();
     const categoryName = router.params.categoryName;
     if (categoryName !== undefined) {
       this.selectedCategory = categoryName;
