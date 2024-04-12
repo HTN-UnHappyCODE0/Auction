@@ -5,41 +5,9 @@
         {{ selectedCategory }}
       </h2>
       <h2 class="text-1xl mx-8 max-w-lg lg:max-w-lg lg:text-1xl">
-        Với 161.382 bản in phiên bản giới hạn và phiên bản mở để bạn lựa chọn,
-        cung cấp những bức ảnh chất lượng cao hoàn toàn phù hợp với không gian
-        của bạn
+        {{ getCategoryDescription(selectedCategory) }}
       </h2>
     </div>
-    <!-- <div class="flex flex-wrap justify-between">
-        <h2 class="text-2xl mx-8 max-w-lg lg:max-w-lg lg:text-4xl">Ảnh</h2>
-      </div> -->
-
-    <!-- <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-        <li v-for="(item, index) in items" :key="index" class="snap-align-none">
-          <div class="group min-w-10 relative">
-            <div
-              class="w-full max-h-40 overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80"
-            >
-              <img
-                :src="item.imageUrl"
-                :alt="item.altText"
-                class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-              />
-            </div>
-            <div class="mt-4 flex justify-between">
-              <div>
-                <h3 class="text-sm text-gray-700">
-                  <a :href="item.link">
-                    <span aria-hidden="true" class="absolute inset-0"></span>
-                    {{ item.title }}
-                  </a>
-                </h3>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul> -->
-
     <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
   </div>
   <div class="flex justify-between mx-auto max-w-screen-xl">
@@ -54,7 +22,7 @@
         class="w-4 h-4 me-1"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
+        fill="currentfilterSelected"
         viewBox="0 0 512 512"
       >
         <path
@@ -83,19 +51,19 @@
   <div class="flex flex-wrap mx-auto max-w-screen-xl">
     <div class="ml-8">
       <button
-        v-for="(color, index) in selectedFilter"
+        v-for="(filterSelected, index) in selectedFilter"
         :key="index"
         type="button"
         class="text-gray-950 bg-gray-300 rounded-full border border-inherit hover:text-blue-700 hover:border-blue-700 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-        @click="removeColor(index)"
+        @click="removefilterSelected(index)"
       >
-        {{ color }}
+        {{ filterSelected }}
         <span class="mx-1">
           <svg
             class="w-4 h-4"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
+            fill="currentfilterSelected"
             viewBox="0 0 448 512"
           >
             <path
@@ -107,10 +75,6 @@
     </div>
   </div>
   <div class="h-full mt-10 mx-auto max-w-screen-xl">
-    <!-- <div class="flex flex-wrap justify-between">
-        <h2 class="text-2xl mx-8 max-w-lg lg:max-w-lg lg:text-4xl">Auctions</h2>
-      </div> -->
-
     <ul class="my-8 mx-8 columns-2 lg:columns-3">
       <li v-for="item of listProducts" :key="item.product_id" class="h-full">
         <router-link
@@ -130,7 +94,7 @@
               />
               <div class="mt-2">
                 <h3 class="text-lg font-bold text-gray-700">
-                  {{item.product_name}}
+                  {{ item.product_name }}
                 </h3>
                 <h4 class="text-sm font-bold text-gray-500">
                   {{ item.description }}
@@ -162,79 +126,134 @@
     </fwb-pagination>
     <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
   </div>
-  <!-- <pre>{{ listProducts }}</pre> -->
+  <pre>{{ selectedFilter }}</pre>
   <drawer @update:selectedFilter="handleselectedFilterUpdate" />
 </template>
 
 <script>
-import data from "../../public/data.json";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   data() {
     return {
-      items: data,
       selectedFilter: [],
       openSort: true,
       sortType: "Sort by",
-      selectedCategory: "0",
+      selectedCategory: "ALL",
     };
   },
   methods: {
     ...mapActions(["fetchProductByCategory", "getProduct"]),
-    toggleSort() {
-      this.openSort = !this.openSort;
-    },
-    updateSort(type) {
-      this.sortType = type;
-      this.openSort = !this.openSort;
-    },
+    // toggleSort() {
+    //   this.openSort = !this.openSort;
+    // },
+    // updateSort(type) {
+    //   this.sortType = type;
+    //   this.openSort = !this.openSort;
+    // },
     handleselectedFilterUpdate(selectedFilter) {
       this.selectedFilter = selectedFilter;
     },
-    removeColor(index) {
+    removefilterSelected(index) {
+      const filterToRemove = this.selectedFilter[index];
+
       this.selectedFilter.splice(index, 1);
-    },
-    removeSize(sizeValue) {
-      const updatedSizes = this.sizes.map((size) => {
-        if (size.value === sizeValue) {
-          return { ...size, checked: false };
-        }
-        return size;
-      });
-      this.$emit("updateSelectedSizes", updatedSizes);
+
+      if (this.selectedFilter.length === 0) {
+        this.selectedCategory = "All";
+      }
+
+      this.filterProducts();
     },
 
-    navigateToCategory() {
-      if (this.selectedCategory !== "0") {
-        this.$router.push({
-          name: "Category",
-          params: { categoryName: this.selectedCategory },
+    filterProducts() {
+      let filteredProducts = this.items;
+
+      this.selectedFilter.forEach((filter) => {
+        filteredProducts = filteredProducts.filter((product) => {
+          return product.someProperty === filter;
         });
-        this.getProduct(this.selectedCategory);
-      } else {
-        this.$router.push("/");
+      });
+
+      if (this.selectedCategory !== "All") {
+        filteredProducts = filteredProducts.filter((product) => {
+          return product.category === this.selectedCategory;
+        });
       }
+
+      this.listProducts = filteredProducts;
+    },
+    // removeSize(sizeValue) {
+    //   const updatedSizes = this.sizes.map((size) => {
+    //     if (size.value === sizeValue) {
+    //       return { ...size, checked: false };
+    //     }
+    //     return size;
+    //   });
+    //   this.$emit("updateSelectedSizes", updatedSizes);
+    // },
+
+    navigateToCategory() {
+      this.$router.push({
+        name: "Category",
+        params: { categoryName: this.selectedCategory },
+      });
+      this.getProduct({
+        category_name: this.selectedCategory,
+        styles: this.getFilterValues("Style"),
+        subjects: this.getFilterValues("Subject"),
+        materials: this.getFilterValues("Material"),
+        sizes: this.getFilterValues("Size"),
+      });
+    },
+    getFilterValues(attributeName) {
+      const filter = this.selectedFilter.find(
+        (filter) => filter.attributeName === attributeName
+      );
+      return filter ? filter.values : [];
+    },
+    getCategoryDescription(categoryName) {
+     
+      const category = this.categories.find(
+        (cat) => cat.category_name === categoryName
+      );
+      return category ? category.category_description : "";
     },
   },
   computed: {
     ...mapGetters(["categories", "listProducts"]),
+    
+  },
+  watch: {
+    selectedFilter: {
+      handler(newVal, oldVal) {
+        this.getProduct({
+          category_name: this.selectedCategory,
+          styles: this.getFilterValues("Style"),
+          subjects: this.getFilterValues("Subject"),
+          materials: this.getFilterValues("Material"),
+          sizes: this.getFilterValues("Size"),
+        });
+      },
+      deep: true,
+    },
   },
 
   mounted() {
-    const router = useRoute();
-    const categoryName = router.params.categoryName; 
+    const router = this.$route;
+    const categoryName = router.params.categoryName;
     if (categoryName !== undefined) {
-      this.selectedCategory = categoryName; 
+      this.selectedCategory = categoryName;
     }
     this.fetchProductByCategory();
     watch(
-    () => router.params.categoryName,
-    (newCategoryName, oldCategoryName) => {
-      if (newCategoryName !== oldCategoryName) {
-        this.selectedCategory = newCategoryName;
+      () => router.params.categoryName,
+      (newCategoryName, oldCategoryName) => {
+        if (newCategoryName !== oldCategoryName) {
+          this.selectedCategory = newCategoryName;
+        }
       }
-    });
+    );
   },
 };
 </script>
@@ -254,12 +273,12 @@ onMounted(() => {
   store.dispatch("getProduct", router.params.categoryName);
 });
 
-const currentPage = ref(1);
-const totalItems = ref(data.length);
-const totalPages = ref(Math.ceil(data.length / 9));
+// const currentPage = ref(1);
+// const totalItems = ref(data.length);
+// const totalPages = ref(Math.ceil(data.length / 9));
 
-const slicedProducts = computed(() => {
-  const start = (currentPage.value - 1) * 9;
-  return data.slice(start, start + 9);
-});
+// const slicedProducts = computed(() => {
+//   const start = (currentPage.value - 1) * 9;
+//   return data.slice(start, start + 9);
+// });
 </script>

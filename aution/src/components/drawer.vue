@@ -82,7 +82,6 @@
             </button>
           </h2>
           <div
-          v-if = "attribute.attribute_name"
             :id="'accordion-collapse-body-' + index"
             class="hidden px-2"
             :aria-labelledby="'accordion-collapse-heading-' + index"
@@ -90,23 +89,20 @@
             <div class="pt-6">
               <div class="space-y-6">
                 <div
-                v-if = "attribute.attribute_name"
                   v-for="value in attribute.attribute_values"
                   :key="value.value"
                   class="flex items-center"
                 >
-                  <input
-                  v-if = "value"
-                    :id="'filter-mobile-rarity-' + value.value"
-                    :name="'rarity[]'"
-                    :value="value.value"
-                    type="checkbox"
-                    class="h-4 w-4 rounded border-gray-300 text-blue-700 focus:ring-indigo-500"
-                    :checked="isChecked(value.value)"
-                    @change="updateselectedFilter(value.value)"
+                  <input :id="'filter-mobile-rarity-' + value.value"
+                  :name="attribute.attribute_name"
+                  :value="value.value" type="checkbox" class="h-4 w-4 rounded
+                  border-gray-300 text-blue-700 focus:ring-indigo-500"
+                  :checked="isChecked(value.value, attribute.attribute_name)"
+                  @change="updateselectedFilter(value.value,
+                  attribute.attribute_name)"
+                  
                   />
                   <label
-                  v-if = "value"
                     :for="'filter-mobile-rarity-' + value.value"
                     class="ml-3 min-w-0 flex-1 text-gray-500"
                     >{{ value.label }}</label
@@ -118,7 +114,6 @@
         </div>
       </div>
 
-      
       <div
         id="accordion-collapse3"
         data-accordion="collapse3"
@@ -266,7 +261,7 @@
   </div>
 </template>
 <script setup>
-import { onMounted,watch } from "vue";
+import { onMounted, watch } from "vue";
 import { initFlowbite } from "flowbite";
 
 onMounted(() => {
@@ -274,12 +269,10 @@ onMounted(() => {
 });
 </script>
 <script>
-
 import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      
       minprice: 1000,
       maxprice: 7000,
       min: 100,
@@ -289,28 +282,32 @@ export default {
       selectedFilter: [],
     };
   },
-  
+
   methods: {
     ...mapActions(["fetchProductByFilter"]),
     loadData() {
-      // Kiểm tra xem dữ liệu đã được tải chưa
       if (!this.products.length) {
-        // Nếu chưa, gọi action để tải dữ liệu
         this.fetchProductByFilter();
       }
     },
 
-    updateselectedFilter(categoryValue) {
-      const index = this.selectedFilter.indexOf(categoryValue);
-      if (index === -1) {
-        this.selectedFilter.push(categoryValue);
+    updateselectedFilter(categoryValue, attributeName) {
+      const selectedFilterIndex = this.selectedFilter.findIndex(filter => filter.attributeName === attributeName);
+      if (selectedFilterIndex === -1) {
+        this.selectedFilter.push({ attributeName, values: [categoryValue] });
       } else {
-        this.selectedFilter.splice(index, 1);
+        const index = this.selectedFilter[selectedFilterIndex].values.indexOf(categoryValue);
+        if (index === -1) {   
+          this.selectedFilter[selectedFilterIndex].values.push(categoryValue);
+        } else {
+          this.selectedFilter[selectedFilterIndex].values.splice(index, 1);
+        }
       }
       this.$emit("update:selectedFilter", this.selectedFilter);
     },
-    isChecked(categoryValuec) {
-      return this.selectedFilter.includes(categoryValuec);
+    isChecked(categoryValue, attributeName) {
+      const selectedFilterIndex = this.selectedFilter.findIndex(filter => filter.attributeName === attributeName);
+      return selectedFilterIndex !== -1 && this.selectedFilter[selectedFilterIndex].values.includes(categoryValue);
     },
     range() {
       this.mintrigger();
