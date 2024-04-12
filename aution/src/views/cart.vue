@@ -99,5 +99,4 @@ export default {
 </script>
 
 <style>
-/* width */
 </style>

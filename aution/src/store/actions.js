@@ -15,7 +15,6 @@ export function getProductByCategory({ commit }, category_name) {
     .then(({ data }) => {
       commit('getListProduct', data.products);
     })
-    
   } else {
     url = `Product/category/name/${category_name}`;
     axiosClient.get(url)
@@ -56,8 +55,6 @@ export function getProduct({ commit }, { category_name, styles, subjects, materi
     })
     
 }
-
-
 export function  fetchProductDetail({ commit }, productId) {
   return axiosClient.get(`/product/${productId}`)
     .then(({ data }) => {

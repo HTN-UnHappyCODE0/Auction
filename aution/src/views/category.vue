@@ -50,32 +50,37 @@
 
   <div class="flex flex-wrap mx-auto max-w-screen-xl">
     <div class="ml-8">
-  <template v-for="(filter, filterIndex) in selectedFilter" :key="filterIndex">
-    <template v-for="(value, valueIndex) in filter.values" :key="valueIndex">
-      <button
-        type="button"
-        class="text-gray-950 bg-gray-100 rounded-full border border-inherit hover:text-blue-700 hover:border-blue-700 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-        @click="removefilterSelected(filterIndex, valueIndex)"
+      <template
+        v-for="(filter, filterIndex) in selectedFilter"
+        :key="filterIndex"
       >
-        {{ value }}
-        <span class="mx-1">
-          <svg
-            class="w-4 h-4"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentfilterSelected"
-            viewBox="0 0 448 512"
+        <template
+          v-for="(value, valueIndex) in filter.values"
+          :key="valueIndex"
+        >
+          <button
+            type="button"
+            class="text-gray-950 bg-gray-100 rounded-full border border-inherit hover:text-blue-700 hover:border-blue-700 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
+            @click="removefilterSelected(filterIndex, valueIndex)"
           >
-            <path
-              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-            />
-          </svg>
-        </span>
-      </button>
-    </template>
-  </template>
-</div>
-
+            {{ value }}
+            <span class="mx-1">
+              <svg
+                class="w-4 h-4"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentfilterSelected"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+                />
+              </svg>
+            </span>
+          </button>
+        </template>
+      </template>
+    </div>
   </div>
   <template v-if="listProducts.length > 0">
     <div class="h-full mt-10 mx-auto max-w-screen-xl">
@@ -136,7 +141,7 @@
       Sorry, no results were found for that query.
     </div>
   </template>
- <pre>{{selectedFilter}}</pre>
+
   <drawer @update:selectedFilter="handleselectedFilterUpdate" />
 </template>
 
@@ -153,7 +158,11 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchProductByCategory", "getProduct", "getProductByCategory"]),
+    ...mapActions([
+      "fetchProductByCategory",
+      "getProduct",
+      "getProductByCategory",
+    ]),
     // toggleSort() {
     //   this.openSort = !this.openSort;
     // },
@@ -165,15 +174,14 @@ export default {
       this.selectedFilter = selectedFilter;
     },
     removefilterSelected(filterIndex, valueIndex) {
-
-  const filterToRemove = this.selectedFilter[filterIndex];
-  const valueToRemove = filterToRemove.values[valueIndex];
-  filterToRemove.values.splice(valueIndex, 1);
-  if (filterToRemove.values.length === 0) {
-    this.selectedFilter.splice(filterIndex, 1);
-  }
-  this.filterProducts();
-},
+      const filterToRemove = this.selectedFilter[filterIndex];
+      const valueToRemove = filterToRemove.values[valueIndex];
+      filterToRemove.values.splice(valueIndex, 1);
+      if (filterToRemove.values.length === 0) {
+        this.selectedFilter.splice(filterIndex, 1);
+      }
+      this.filterProducts();
+    },
     filterProducts() {
       let filteredProducts = this.items;
       this.selectedFilter.forEach((filter) => {
@@ -219,7 +227,6 @@ export default {
     },
     getCategoryDescription(categoryName) {
       if (!this.categories) {
-        
         return "";
       }
       const category = this.categories.find(
@@ -259,7 +266,7 @@ export default {
         if (newCategoryName !== oldCategoryName) {
           this.selectedCategory = newCategoryName;
           this.getProductByCategory(newCategoryName);
-
+          
         }
       }
     );
