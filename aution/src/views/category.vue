@@ -153,7 +153,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchProductByCategory", "getProduct"]),
+    ...mapActions(["fetchProductByCategory", "getProduct", "getProductByCategory"]),
     // toggleSort() {
     //   this.openSort = !this.openSort;
     // },
@@ -165,39 +165,27 @@ export default {
       this.selectedFilter = selectedFilter;
     },
     removefilterSelected(filterIndex, valueIndex) {
-  // Lấy filter cần xóa giá trị
+
   const filterToRemove = this.selectedFilter[filterIndex];
-  
-  // Lấy giá trị cần xóa từ filter
   const valueToRemove = filterToRemove.values[valueIndex];
-
-  // Xóa giá trị khỏi filter
   filterToRemove.values.splice(valueIndex, 1);
-
-  // Kiểm tra nếu filter không còn giá trị nào thì xóa luôn filter đó khỏi selectedFilter
   if (filterToRemove.values.length === 0) {
     this.selectedFilter.splice(filterIndex, 1);
   }
-
-  // Sau khi loại bỏ giá trị, cập nhật danh sách sản phẩm
   this.filterProducts();
 },
-
     filterProducts() {
       let filteredProducts = this.items;
-
       this.selectedFilter.forEach((filter) => {
         filteredProducts = filteredProducts.filter((product) => {
           return product.someProperty === filter;
         });
       });
-
       if (this.selectedCategory !== "All") {
         filteredProducts = filteredProducts.filter((product) => {
           return product.category === this.selectedCategory;
         });
       }
-
       this.listProducts = filteredProducts;
     },
     // removeSize(sizeValue) {
@@ -231,14 +219,12 @@ export default {
     },
     getCategoryDescription(categoryName) {
       if (!this.categories) {
-        console.error("this.categories is undefined");
+        
         return "";
       }
-
       const category = this.categories.find(
         (cat) => cat.category_name === categoryName
       );
-
       return category ? category.category_description : "";
     },
   },
@@ -272,6 +258,8 @@ export default {
       (newCategoryName, oldCategoryName) => {
         if (newCategoryName !== oldCategoryName) {
           this.selectedCategory = newCategoryName;
+          this.getProductByCategory(newCategoryName);
+
         }
       }
     );
@@ -291,7 +279,7 @@ const router = useRoute();
 
 onMounted(() => {
   initFlowbite();
-  store.dispatch("getProduct", router.params.categoryName);
+  store.dispatch("getProductByCategory", router.params.categoryName);
 });
 
 // const currentPage = ref(1);

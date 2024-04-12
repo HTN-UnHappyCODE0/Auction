@@ -7,23 +7,23 @@ export function searchProduct({ commit },keyword) {
   });
 }
 
-// export function getProduct({ commit }, category_name) {
-//   let url = "/Product"; 
-//   if (category_name.toLowerCase() === "all") {
-//     url = '/Product';
-//     axiosClient.get(url)
-//     .then(({ data }) => {
-//       commit('getListProduct', data.products);
-//     })
+export function getProductByCategory({ commit }, category_name) {
+  let url = "/Product"; 
+  if (category_name.toLowerCase() === "all") {
+    url = '/Product';
+    axiosClient.get(url)
+    .then(({ data }) => {
+      commit('getListProduct', data.products);
+    })
     
-//   } else {
-//     url = `Product/category/name/${category_name}`;
-//     axiosClient.get(url)
-//     .then(({ data }) => {
-//       commit('getListProduct', data);
-//     })
-//   }
-// }
+  } else {
+    url = `Product/category/name/${category_name}`;
+    axiosClient.get(url)
+    .then(({ data }) => {
+      commit('getListProduct', data);
+    })
+  }
+}
 
 export function getProduct({ commit }, { category_name, styles, subjects, materials, sizes }) {
   
