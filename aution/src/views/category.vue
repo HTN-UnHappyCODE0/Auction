@@ -50,14 +50,14 @@
 
   <div class="flex flex-wrap mx-auto max-w-screen-xl">
     <div class="ml-8">
+  <template v-for="(filter, filterIndex) in selectedFilter" :key="filterIndex">
+    <template v-for="(value, valueIndex) in filter.values" :key="valueIndex">
       <button
-        v-for="(filterSelected, index) in selectedFilter"
-        :key="index"
         type="button"
-        class="text-gray-950 bg-gray-300 rounded-full border border-inherit hover:text-blue-700 hover:border-blue-700 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
-        @click="removefilterSelected(index)"
+        class="text-gray-950 bg-gray-100 rounded-full border border-inherit hover:text-blue-700 hover:border-blue-700 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2"
+        @click="removefilterSelected(filterIndex, valueIndex)"
       >
-        {{ filterSelected }}
+        {{ value }}
         <span class="mx-1">
           <svg
             class="w-4 h-4"
@@ -72,7 +72,10 @@
           </svg>
         </span>
       </button>
-    </div>
+    </template>
+  </template>
+</div>
+
   </div>
   <template v-if="listProducts.length > 0">
     <div class="h-full mt-10 mx-auto max-w-screen-xl">
@@ -133,7 +136,7 @@
       Sorry, no results were found for that query.
     </div>
   </template>
- 
+ <pre>{{selectedFilter}}</pre>
   <drawer @update:selectedFilter="handleselectedFilterUpdate" />
 </template>
 
@@ -161,17 +164,24 @@ export default {
     handleselectedFilterUpdate(selectedFilter) {
       this.selectedFilter = selectedFilter;
     },
-    removefilterSelected(index) {
-      const filterToRemove = this.selectedFilter[index];
+    removefilterSelected(filterIndex, valueIndex) {
+  // Lấy filter cần xóa giá trị
+  const filterToRemove = this.selectedFilter[filterIndex];
+  
+  // Lấy giá trị cần xóa từ filter
+  const valueToRemove = filterToRemove.values[valueIndex];
 
-      this.selectedFilter.splice(index, 1);
+  // Xóa giá trị khỏi filter
+  filterToRemove.values.splice(valueIndex, 1);
 
-      // if (this.selectedFilter.length === 0) {
-      //   this.selectedCategory = "All";
-      // }
+  // Kiểm tra nếu filter không còn giá trị nào thì xóa luôn filter đó khỏi selectedFilter
+  if (filterToRemove.values.length === 0) {
+    this.selectedFilter.splice(filterIndex, 1);
+  }
 
-      this.filterProducts();
-    },
+  // Sau khi loại bỏ giá trị, cập nhật danh sách sản phẩm
+  this.filterProducts();
+},
 
     filterProducts() {
       let filteredProducts = this.items;
