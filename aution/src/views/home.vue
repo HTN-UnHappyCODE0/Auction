@@ -106,11 +106,11 @@
 
   <div class=" mx-auto my-5 lg:max-w-7xl ">
     <div class="items-center xl:flex xl:my-10">
-      <h1 class="font-medium mx-10 text-xl xl:mx-0">Lựa chọn theo thể loại</h1>
+      <h1 class="font-medium mx-10 text-xl xl:mx-0">Lựa chọn theo giá</h1>
       <div class="mt-5 mx-10 flex-grow justify-evenly flex xl:mt-0">
-        <selectCategoryButton :href="'category_excepturi' "> Tranh</selectCategoryButton />
-        <selectCategoryButton :href=" 'category_excepturi' "> Ảnh</selectCategoryButton />
-        <selectCategoryButton :href="'category_excepturi' "> ???</selectCategoryButton />
+        <selectCategoryButton :href="'category_excepturi' "> Tranh</selectCategoryButton >
+        <selectCategoryButton :href=" 'category_excepturi' "> Ảnh</selectCategoryButton >
+        <selectCategoryButton :href="'category_excepturi' "> ???</selectCategoryButton >
       </div>
     </div>
 
@@ -152,7 +152,7 @@
   <div class="relative mx-auto mb-20 lg:max-w-7xl">
     <div class="flex mx-2 justify-between">
       <div>
-        <h2 class="text-2xl py-4 font-bold tracking-tight text-gray-900">
+        <h2 class="text-2xl py-4 font-normal tracking-tight text-gray-900">
           Tác phẩm nổi bật
         </h2>
       </div>

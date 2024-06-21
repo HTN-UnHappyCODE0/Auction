@@ -141,7 +141,7 @@
       Sorry, no results were found for that query.
     </div>
   </template>
-
+{{selectedFilter}}
   <drawer @update:selectedFilter="handleselectedFilterUpdate" />
 </template>
 
@@ -272,7 +272,6 @@ export default {
     );
   },
 };
-1
 </script>
 
 <script setup>
